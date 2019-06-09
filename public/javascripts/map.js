@@ -23,8 +23,11 @@ var OpenStreetMap_Mapnik = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.
 // Here we define an async function to get and parse geojson from URL
 MyMap.getGeoData = async function getGeoData(url) {
   let response = await fetch(url);
-  let data = await response.json();
-  return data;
+  if (response.status === 200) {
+    let data = await response.json();
+    return data;
+  }
+  throw new Error(response.status)
 }
 
 // set some default style for the map
