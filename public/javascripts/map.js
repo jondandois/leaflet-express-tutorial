@@ -51,7 +51,7 @@ MyMap.styler = function(feature) {
 geojson.addTo(MyMap.map);
 
 // add the data to the map
-MyMap.getGeoData('/railroads')
+MyMap.getGeoData('/api/railroads')
   .then(data => geojson.addData(data))
   .catch(e => console.warn('Fetching GeoJSON had an error',e));
 

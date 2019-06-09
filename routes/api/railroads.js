@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
       res.locals.error = err;
       res.locals.error.status = status;
       res.status(status);
-      return res.render('error');
+      return res.status(500).json({"message": "There was a problem communicating with the server"});
     }
     res.status(200).json(results.rows[0]['jsonb_build_object'])
   })
