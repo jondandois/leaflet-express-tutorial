@@ -1,0 +1,8 @@
+# rename this file to '.env'
+
+# db connections
+DB_USERNAME = "db username"
+DB_PASSWORD = "db password"
+DB_HOST = "db host"
+DB_PORT = db port
+DB = "db name"
