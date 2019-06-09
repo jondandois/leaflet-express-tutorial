@@ -8,7 +8,7 @@ var database = process.env.DB;
 
 // Setup
 const express = require('express');
-var createError = require('http-errors');
+const fs = require('fs');
 const Pool = require('pg').Pool;
 const pool = new Pool({
   user: username,
@@ -16,6 +16,9 @@ const pool = new Pool({
   host: host,
   port: port,
   database: database,
+  ssl: {
+    ca: fs.readFileSync("config/amazon-rds-ca-cert.pem").toString()
+  }
 });
 var router = express.Router();
 
@@ -37,6 +40,7 @@ router.get('/', (req, res) => {
       FROM (SELECT * FROM public.railroads limit 1000) inputs) features
     `;
   pool.query(query, (err, results, next) => {
+    console.log(err)
     if (err) {
       let status = 500;
       res.locals.message = "Something went wrong"
