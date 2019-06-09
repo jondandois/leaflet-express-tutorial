@@ -5,7 +5,8 @@ Going to follow [this tutorial from MDN](https://developer.mozilla.org/en-US/doc
 3. install nodemon `npm install -g nodemon`
 4. add `devstart` to package.json
 5. load and test app
-6. make a new route for `railraods`
+6. make a new route for `railroads`
+7. add a map (http://duspviz.mit.edu/web-map-workshop/leaflet_nodejs_postgis/)
 
 
 
@@ -13,5 +14,4 @@ Going to follow [this tutorial from MDN](https://developer.mozilla.org/en-US/doc
 
 
 ## TODO
-- add the railroads route
 - add the basic leaflet map

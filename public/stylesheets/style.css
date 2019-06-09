@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+
+html,
+body,
+#map {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
