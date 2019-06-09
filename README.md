@@ -2,6 +2,16 @@ Going to follow [this tutorial from MDN](https://developer.mozilla.org/en-US/doc
 
 1. `npm install -g express-generator`
 2. `express leaflet-express-tutorial --view=pug`, and follow instructions to install and run
-3. load and test app
-4. install nodemon `npm install -g nodemon`
-5. make a new route for `railraods`
+3. install nodemon `npm install -g nodemon`
+4. add `devstart` to package.json
+5. load and test app
+6. make a new route for `railraods`
+
+
+
+
+
+
+## TODO
+- add the railroads route
+- add the basic leaflet map
