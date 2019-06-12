@@ -31,21 +31,18 @@ MyMap.getGeoData = async function getGeoData(url) {
 }
 
 // set some default style for the map
-// "rail"
-// "road"
-// "hwy"
 MyMap.styler = function(feature) {
   let style = {
     color: "rgb(100,255,143)",
     fillOpacity: 1,
     weight: 3
   }
-  let props = feature.properties;
-  if (props.subtype === 'rail'){
-    style.color = 'red'
-  } else if (props.subtype === 'road') {
-    style.color = 'blue';
-  }
+  // let props = feature.properties;
+  // if (props.subtype === 'rail'){
+  //   style.color = 'red'
+  // } else if (props.subtype === 'road') {
+  //   style.color = 'blue';
+  // }
 
   return style;
 }
@@ -54,7 +51,7 @@ MyMap.styler = function(feature) {
 geojson.addTo(MyMap.map);
 
 // add the data to the map
-MyMap.getGeoData('/api/railroads')
+MyMap.getGeoData('/api/streetcars')
   .then(data => geojson.addData(data))
   .catch(e => console.warn('Fetching GeoJSON had an error',e));
 
@@ -66,8 +63,8 @@ MyMap.makePopup = function (event) {
   let props = feature.properties;
   let label = `
     <ul>
-      <li>Description: ${props.description}</li>
-      <li>SubType: ${props.subtype}</li>
+      <li>id: ${props.id}</li>
+      <li>Detail: ${props.detail}</li>
     </ul>
   `;
   return label;
