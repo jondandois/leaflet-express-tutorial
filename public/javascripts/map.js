@@ -4,7 +4,7 @@ const MyMap = {};
 // start leaflet map
 MyMap.map = L.map('map', {
   center: [39.29564, -76.60689],
-  zoom: 14,
+  zoom: 13,
   minZoom: 4,
   maxZoom: 19
 });
@@ -47,7 +47,7 @@ MyMap.styler = function(feature) {
   return style;
 }
 // define an empty geojson obect to store the data
-  let geojson = L.geoJson(null, {style: MyMap.styler});
+let geojson = L.geoJson(null, {style: MyMap.styler});
 geojson.addTo(MyMap.map);
 
 // add the data to the map

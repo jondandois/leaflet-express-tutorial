@@ -16,7 +16,7 @@ const pool = new Pool({
 //   GET
 // https://www.youtube.com/watch?v=j55fHUJqtyw
 router.get('/', (req, res) => {
-  var query = ApiHelpers.getAllFeaturesQuery('streetcars'); 
+  var query = ApiHelpers.getAllFeaturesQuery('atlas_index'); 
   pool.query(query, (err, results) => {
     if (err) {
       return ApiHelpers.handleQueryErrors(err, res);
