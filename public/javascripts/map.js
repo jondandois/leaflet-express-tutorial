@@ -4,7 +4,7 @@ const MyMap = {};
 // start leaflet map
 MyMap.map = L.map('map', {
   center: [39.29564, -76.60689],
-  zoom: 15,
+  zoom: 14,
   minZoom: 4,
   maxZoom: 19
 });
