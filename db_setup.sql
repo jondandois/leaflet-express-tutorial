@@ -1,5 +1,7 @@
 -- add postgis extension
 create extension postgis;
+-- ###############################
+
 
 --remove extra projections to save space
 delete from spatial_ref_sys
@@ -7,6 +9,7 @@ delete from spatial_ref_sys
 		srid != 2248 and
 		srid != 4326 and
 		srid != 3857;
+-- ###############################
 
 -- create our main table
 CREATE TABLE streetcars (
@@ -15,6 +18,7 @@ CREATE TABLE streetcars (
 	geom geometry(LINESTRING,2248),
   editor varchar(25)
 );
+-- ###############################
 
 -- http://postgis.net/workshops/postgis-intro/history_tracking.html
 -- create triggers for logging
@@ -29,12 +33,14 @@ CREATE TABLE streetcars_history (
   deleted TIMESTAMP,
   deleted_by VARCHAR(32)
 );
+-- ###############################
 
 -- populate with current data
 INSERT INTO streetcars_history
   (id, detail, geom, editor, created, created_by)
    SELECT id, detail, geom, editor, now(), current_user
    FROM streetcars;
+-- ###############################
 
 
 -- trigger on create
@@ -54,6 +60,7 @@ LANGUAGE plpgsql;
 CREATE TRIGGER streetcars_insert_trigger
 AFTER INSERT ON streetcars
   FOR EACH ROW EXECUTE PROCEDURE streetcars_insert();
+-- ###############################
 
 -- trigger on delete
 CREATE OR REPLACE FUNCTION streetcars_delete() RETURNS trigger AS
@@ -70,7 +77,7 @@ LANGUAGE plpgsql;
 CREATE TRIGGER streetcars_delete_trigger
 AFTER DELETE ON streetcars
   FOR EACH ROW EXECUTE PROCEDURE streetcars_delete();
-
+-- ###############################
 
 
 -- trigger on update
@@ -96,6 +103,7 @@ LANGUAGE plpgsql;
 CREATE TRIGGER streetcars_update_trigger
 AFTER UPDATE ON streetcars
   FOR EACH ROW EXECUTE PROCEDURE streetcars_update();
+-- ###############################
 
 -- Let's also make a table for storing the atlas index polygons and numbers to help with tracking progress
 CREATE TABLE public.atlas_index (
@@ -104,3 +112,4 @@ CREATE TABLE public.atlas_index (
   progress varchar(25),
   geom geometry(POLYGON, 2248)
 );
+-- ###############################
